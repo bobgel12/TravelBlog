@@ -1,0 +1,23 @@
+<% include ./partials/header %>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="container" id="postContainer">
+			<h1 style="text-align: center;">Add Comment - <%= foundPost.title%></h1>
+			<form action="/IndexPage/<%= foundPost._id %>/comments" method="POST">
+				<div class="form-group">
+					<label for="comment">Comment</label><br>
+					<input class = "form-control" type="text" placeholder="content" name="comment[content]">
+				</div>
+				<div class="form-group">
+					<input class = "form-control" type="submit" value="Submit" class="btn btn-primary btn-lg btn-block">
+				</div>
+			</form>	
+			<a href="/IndexPage/<%= foundPost._id%>">Go back</a>
+		</div>	
+	</div>
+</div>
+
+
+<% include ./partials/footer %>

@@ -1,0 +1,33 @@
+
+#containerView {
+float: right; 
+margin-right: 70px; 
+margin-top: 70px; 
+width: 300px;
+}
+
+.containerBox {
+  float: right; 
+  margin-right: 15vh; 
+  margin-top: 10vh; 
+  width: 20%;
+}
+
+.well {
+opacity: 75%;
+}
+
+body { 
+  background: url(https://images.unsplash.com/photo-1421338443272-0dde2463976a?dpr=2&auto=format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=&bg=) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#button{
+  background-color: rgb(34,34,34); 
+  color: DIMGREY;
+}
+#button:hover{
+  color: white;
+}

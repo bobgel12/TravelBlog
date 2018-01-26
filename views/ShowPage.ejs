@@ -1,0 +1,107 @@
+	<% include ./partials/header %>
+	<head>
+		<link rel="stylesheet" href="/ShowPage.css">
+	</head>
+	<br>
+	<br>
+	<br>
+	
+	<div class="container">
+
+		<div class="postContainer">
+			<div class="postTitle">
+				<h4><%= foundPost.title %> - <%= foundPost.subject%></h4>
+			</div>
+			<div class="postAuthor">
+				
+				<p><span><img class="profile" src="https://image.flaticon.com/icons/svg/149/149066.svg" alt="profileIcon"></span> <span><em><%= foundPost.author.username %></em></span></p>
+			</div>
+			<div class="postContent">
+				<p><%= foundPost.content%></p>
+			</div>
+			<div class="container">
+				<% if (currentUser && foundPost.author.id.equals(currentUser._id)) { %>
+					<a href="/IndexPage/<%= foundPost._id%>/edit" class="btn btn-lg btn-warning" id="button">Edit</a>
+					<form action="/IndexPage/<%= foundPost._id%>?_method=delete" method="post" style="display: inline-block;" onsubmit="return confirm('Are you sure to delete this post?');">
+						<input class="btn btn-lg btn-danger" id="button" type="submit" value="Delete">
+					</form>
+				<%}%>
+				<a href="/IndexPage/<%= foundPost._id%>/comments/addNewComment" class="btn btn-lg btn-primary " id="button">Comment</a>
+			</div>
+
+			<br>
+			<br>
+			<div class="container commentContainer">
+				<% foundPost.comments.forEach(function(comment){ %>
+				  <br>
+				  <div>
+				        <p>
+				        	<em><strong><%= comment.author.username %></strong></em>: <%= comment.content %>
+				      	</p>
+				      	<% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+				      	<div class="container">
+				      		<a href="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>/edit" class="btn btn-small btn-warning">Edit</a>
+				      		<form action="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>?_method=delete" method="post" style= "display: inline-block;">
+								<input class="btn btn-small btn-danger" id="button" type="submit" value="Delete">
+							</form>
+				      	</div>
+				      	<% } %>
+				  </div>
+				  <br>
+				<%});%>			
+			</div>
+
+		</div>
+
+
+
+<!-- 		<div class="chatContainer">
+			<div class="chatMessage">
+			  <div id="chatHeader"><h3><%= foundPost.title.toUpperCase() %> - <%= foundPost.subject.toUpperCase()%></h3></div>
+
+			  <p><img id="profile" src="/img/User-1080.png" alt="Mountain View"><p><%= foundPost.author.username %></p></p>
+
+			  <div id="questionContent">
+			        <p>
+			        	<%= foundPost.content%>
+			      	</p>
+				</div>
+				<br>
+
+				<div class="container">
+					<% if (currentUser && foundPost.author.id.equals(currentUser._id)) { %>
+						<a href="/IndexPage/<%= foundPost._id%>/edit" class="btn btn-lg btn-warning" id="button">Edit</a>
+						<form action="/IndexPage/<%= foundPost._id%>?_method=delete" method="post" style="display: inline-block;" onsubmit="return confirm('Are you sure to delete this post?');">
+							<input class="btn btn-lg btn-danger" id="button" type="submit" value="Delete">
+						</form>
+					<%}%>
+					<a href="/IndexPage/<%= foundPost._id%>/comments/addNewComment" class="btn btn-lg btn-primary " id="button">Comment</a>
+				</div>
+
+			</div>
+			
+			<br>
+			<br>
+			<div class="container commentContainer">
+				<% foundPost.comments.forEach(function(comment){ %>
+				  <br>
+				  <div>
+				        <p>
+				        	<em><strong><%= comment.author.username %></strong></em>: <%= comment.content %>
+				      	</p>
+				      	<% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+				      	<div class="container">
+				      		<a href="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>/edit" class="btn btn-small btn-warning">Edit</a>
+				      		<form action="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>?_method=delete" method="post" style= "display: inline-block;">
+								<input class="btn btn-small btn-danger" id="button" type="submit" value="Delete">
+							</form>
+				      	</div>
+				      	<% } %>
+				  </div>
+				  <br>
+				<%});%>			
+			</div>
+		</div> -->
+	</div>
+			
+<% include ./partials/footer %>

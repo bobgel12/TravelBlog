@@ -1,0 +1,32 @@
+<% include ./partials/header %>
+
+
+		<head>
+			<link rel="stylesheet" href="/IndexPage.css">
+		</head>
+
+	    <div class="container">
+	    	<p style="margin-bottom: 65px; margin-top: 65px;">
+				<a href="/NewPost" class="btn btn-success newpost">Add New Post</a>
+	    	</p>
+
+			<% posts.forEach(function(post){ %>
+				<div class="postContainer">
+					<div class="postTitle">
+						<h4><%= post.title %> - <%= post.subject%></h4>
+					</div>
+					<div class="postAuthor">
+
+						<p><span><img class="profile" src="https://image.flaticon.com/icons/svg/149/149066.svg" alt="profileIcon"></span> <span><em><%= post.author.username %></em></span></p>
+					</div>
+					<div class="postContent">
+						<p><%= post.content%></p>
+					</div>
+					<a href="/<%=post._id%>" class="btn btn-small btn-primary" id="button">View</a>
+				</div>
+			<% }); %>
+		</div>
+
+		<br>
+
+<% include ./partials/footer %>

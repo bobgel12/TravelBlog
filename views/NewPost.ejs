@@ -1,0 +1,36 @@
+<% include ./partials/header %>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="container" id="postContainer">
+			<h1 style="text-align: center;">Create a New Post</h1>
+			<form action="/" method="post">
+				<div class="form-group">
+					<label for="title">Title</label><br>
+					<input class = "form-control" id="title" type="text" placeholder="Title" name="post[title]">
+				</div>
+				<div class="form-group">
+					<label for="content">Question</label><br>
+					<input class = "form-control" id="question" type="text" placeholder="Question Content" name="post[content]">
+				</div>
+				<div class="form-group">
+					<label for="subject">Subject</label><br>
+					<select name="post[subject]" id="subject">
+						<option value="Math">Math</option>
+						<option value="Computer Science">Computer Science</option>
+						<option value="Physic">Physic</option>
+						<option value="Chemistry">Chemistry</option>
+						<option value="Other">Other</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input class = "form-control" type="submit" value="Submit" class="btn btn-primary btn-lg btn-block">
+				</div>
+			</form>
+			<a href="/">Go back</a>
+		</div>
+	</div>
+</div>
+
+
+<% include ./partials/footer %>

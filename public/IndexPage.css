@@ -1,0 +1,106 @@
+.jumbotron{
+	background: url('./img/1.jpg') no-repeat;
+	background-size: 100%;
+	text-align: center;
+	color: whitesmoke;
+	height: 300px;
+	width: 100%;
+}
+.jumbotron .container{
+	margin-top: 50px;
+	width: 100%;
+}
+.container .chatContainer{
+	width: 80%;
+	margin: 40px 10%;
+	/*border: 2px solid grey;*/
+	border-bottom: 1px solid LIGHTGRAY;
+	padding: 30px 30px 20px 30px;
+}
+.container .chatContainer .chatMesage #chatHeader h2{
+	margin-left:15px; 
+	margin-top:15px;
+}
+#profile{
+	margin-left: 50px;
+	width:50px; 
+	height:50px;
+	overflow: hidden;
+	float:left;
+}
+
+.container .chatContainer .chatMesage #profile>img{
+	width:50px;
+	height:50px;
+}
+
+
+.container .chatContainer .chatMesage #name{
+	margin-left:50px; 
+	color: grey; 
+	width: 150px; 
+	padding-top: 10px;
+}
+.container .chatContainer .chatMesage #questionContent{
+	padding-top: 25px;
+	padding-left: 25px; 
+	padding-right: 25px;
+}
+
+
+.box {
+	float: left;
+	margin-left: 1.6%;
+	width: 30%;
+	font-size: 16;
+}
+.thumbImage{
+	width: 50%;
+}
+#profile {
+
+    border: 0;
+    width: 50px;
+    height: 50px;
+}
+.chatContainer .chatMessage {
+    /*height: 220px;*/
+    border-bottom: 1px solid #ddd;
+    /*overflow-y: scroll;*/
+    background-color: #ffffff;
+}
+
+.commentContainer{
+	height: 300px;
+	overflow-y: scroll;
+}
+
+
+#questionContent{
+	margin-top: 40px;
+}
+#viewButton{
+	margin: 10px auto;
+}
+
+.footerContainer {
+  	margin: 20vh 10% 100px 10%;
+  	text-align: center;
+}
+.footerContainer{
+	margin-top: 100px;
+	padding-top: 50px;
+}
+/*#button {
+    background-color: rgb(34,34,34);
+    color: DIMGREY;
+    border-color: DIMGREY;
+}
+#button:hover{
+	color: white;
+}*/
+.newpost{
+	float: right;
+	margin-right: 10%;
+	margin-bottom: 40px;
+}

@@ -1,0 +1,40 @@
+.footer {
+  margin-top: 200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+#postContainer{
+	width: 380px;
+	margin: 200px auto 40px auto;
+	padding: 0;
+}
+.alert{
+	text-align: center;
+  margin-top: 50px;
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+.profile {
+  width: 50px;
+}
+.postAuthor{
+  display: inline-block;
+}
+.wellcome{
+  text-transform: capitalize;
+}
+.profile {
+  width: 50px;
+}
+.postAuthor{
+  display: inline-block;
+}
+.postContainer{
+  width: 70%;
+  margin: 1px auto;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+}
