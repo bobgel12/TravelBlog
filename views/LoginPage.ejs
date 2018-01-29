@@ -5,13 +5,11 @@
   <link rel="stylesheet" href="/LoginPage.css">
 </head>
 
-<div class="row">
-  <div col-md-6 cl-sm-12>
-    <div class="container surround well" id="containerView">
-      <center>
-          <form style="margin-bottom: 5vh" method="post" action="/LoginPage">
-            <div style="margin-bottom: 5vh">
-              <h2>Tutor Exchange</h2>
+<div class="container">
+  <div class="loginForm">
+          <form method="post" action="/LoginPage">
+            <div>
+              <h2>Wellcome Back!</h2>
             </div>
 
           <div class="form-group">
@@ -22,21 +20,16 @@
           <div class="form-group">
             <label>Password</label>
             <input type="password" name="password" class="form-control" placeholder="Password">
-          </div>      
+          </div>
 
           <hr class="style14">
-          <input type="submit" id="button" class="btn btn-lg btn-block" value="Log in">
+          <button class="btn btn-outline-secondary btn-block btn-lg">Log In</button>
           <br>
 
-          <p>Developed and designed by the Computer Science   Club of Evergreen Valley College</p>
+          <p style="center">Developed and designed by Bobgel</p>
 
         </form>
-
-      </center>
-
-    </div>    
   </div>
 </div>
 
 <% include ./partials/footer %>
-

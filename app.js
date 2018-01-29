@@ -3,9 +3,9 @@ var express 	= require("express"),
 	mongoose 	= require("mongoose"),
 	passport 	= require("passport"),
 	flash 		= require("connect-flash-plus"),
-	Post 		= require("./models/post"),
+	Post 			= require("./models/post"),
 	Comment 	= require("./models/comment"),
-	User 		= require("./models/user"),
+	User 			= require("./models/user"),
 	LocalStrategy 	= require("passport-local"),
 	methodOverride 	= require("method-override"),
 	session 		= require("express-session");
@@ -17,9 +17,10 @@ var  indexPageRoutes = require("./routes/IndexPage"),
 // Fixing the ennoying bugs
 // mongoose.Promise = global.Promise;
 
-var url = process.env.DATABASEURL || "mongodb://localhost/posts"
-mongoose.connect(url);
-// mongoose.connect("mongodb://phuc:phucle@ds143211.mlab.com:43211/tutorapp");
+// var url = process.env.DATABASEURL || "mongodb://localhost/posts"
+// mongoose.connect(url);
+mongoose.connect("mongodb://angel:Angelle212@ds115768.mlab.com:15768/angelblog");
+
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -49,7 +50,7 @@ app.use(function(req, res, next){
 });
 
 app.use("/", indexPageRoutes);
-app.use("/:id/comments",commentRoutes);
+app.use("/IndexPage/:id/comments",commentRoutes);
 
 
 
