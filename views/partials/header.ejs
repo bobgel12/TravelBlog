@@ -8,48 +8,43 @@
     <!-- <title>Travel's lover</title> -->
     <title><%= title%></title>
     <!-- Bootstrap CSS  -->
-    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Josefin+Slab|Quicksand" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Custom CSS for this page -->
-    <link rel="stylesheet" href="./css/master.css">
-
-  </head>
+    <link rel="stylesheet" href="/master.css">
   <body>
     <!-- Header -->
     <header>
-      <nav class="navbar navbar-transparent navbar-expand-md">
+      <nav class="navbar navbar-expand-md">
         <a id="brand" class="navbar-brand" href="/">Travel Lovers</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/">Blog</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="/">Destination</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/">Packing Guide</a>
+              <a class="nav-link" href="/">Accommodation</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/">Accommodation Guide</a>
+              <a class="nav-link" href="/">Guide</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/AboutPage">Contact</a>
+              <a class="nav-link" href="/">Book Your Flight</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/AboutPage">About Me</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <% if(!currentUser){ %>
+            <% if(!user){ %>
               <li><a href="/RegisterPage"><i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
               <li><a href="/LoginPage"><i class="fa fa-sign-in" aria-hidden="true"></i> </a></li>
             <%} else{%>
-              <li><a class="wellcome" href="#">Wellcome, <%=currentUser.firstName%><i class="fa fa-sign-in" aria-hidden="true"></i> </a></li>
+              <li><a class="wellcome" href="#">Wellcome, <%=user.firstName%><i class="fa fa-sign-in" aria-hidden="true"></i> </a></li>
               <li><a href="/LogOut">Log Out  <i class="fa fa-sign-in" aria-hidden="true"></i> </a></li>
             <%}%>
           </ul>

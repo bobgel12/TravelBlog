@@ -3,8 +3,9 @@ var express = require("express"),
 	router 	= express.Router(),
 	Post = require("../models/post"),
 	middleware = require("../middleware"),
-	passport = require("passport");
-	User = require("../models/user");
+	passport = require("passport"),
+	User = require("../models/user"),
+	Subcriber = require("../models/subcriber");
 
   router.get("/", function (req, res) {
   	Post.find({}, function(err, posts){
@@ -141,6 +142,20 @@ router.get("/LogOut", function (req, res) {
 	req.logout();
 	req.flash("success", "You are logged out!");
 	res.redirect("/");
+})
+
+
+router.post("/subcribe", function(req, res){
+	Subcriber.create(req.body.subcriber, function (err, subcriber) {
+		if (err) {
+			console.log(err);
+		}
+		else{
+			subcriber.save();
+			console.log("subcriber saved success!");
+			res.redirect("/");
+		}
+	});
 })
 
 

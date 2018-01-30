@@ -8,7 +8,8 @@ var express 	= require("express"),
 	User 			= require("./models/user"),
 	LocalStrategy 	= require("passport-local"),
 	methodOverride 	= require("method-override"),
-	session 		= require("express-session");
+	session 		= require("express-session"),
+	middleware = require("./middleware");
 
 var  indexPageRoutes = require("./routes/IndexPage"),
 	   commentRoutes 	= require("./routes/comments"),
@@ -21,13 +22,13 @@ var  indexPageRoutes = require("./routes/IndexPage"),
 // mongoose.connect(url);
 mongoose.connect("mongodb://angel:Angelle212@ds115768.mlab.com:15768/angelblog");
 
+// app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("public"));
 app.use(flash());
 app.use(methodOverride("_method"));
-
 // Passport Configuration
 app.use(session({
 	secret: "This is the requirement for the Passport",
@@ -49,6 +50,7 @@ app.use(function(req, res, next){
 	next();
 });
 
+app.use(middleware.passUser);
 app.use("/", indexPageRoutes);
 app.use("/IndexPage/:id/comments",commentRoutes);
 

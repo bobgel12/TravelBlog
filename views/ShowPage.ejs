@@ -1,107 +1,113 @@
-	<% include ./partials/header %>
-	<head>
-		<link rel="stylesheet" href="/ShowPage.css">
-	</head>
-	<br>
-	<br>
-	<br>
-	
-	<div class="container">
+<% include ./partials/header %>
+<head>
+  <link rel="stylesheet" href="../css/ShowPage.css">
+</head>
 
-		<div class="postContainer">
-			<div class="postTitle">
-				<h4><%= foundPost.title %> - <%= foundPost.subject%></h4>
-			</div>
-			<div class="postAuthor">
-				
-				<p><span><img class="profile" src="https://image.flaticon.com/icons/svg/149/149066.svg" alt="profileIcon"></span> <span><em><%= foundPost.author.username %></em></span></p>
-			</div>
-			<div class="postContent">
-				<p><%= foundPost.content%></p>
-			</div>
-			<div class="container">
-				<% if (currentUser && foundPost.author.id.equals(currentUser._id)) { %>
-					<a href="/IndexPage/<%= foundPost._id%>/edit" class="btn btn-lg btn-warning" id="button">Edit</a>
-					<form action="/IndexPage/<%= foundPost._id%>?_method=delete" method="post" style="display: inline-block;" onsubmit="return confirm('Are you sure to delete this post?');">
-						<input class="btn btn-lg btn-danger" id="button" type="submit" value="Delete">
-					</form>
-				<%}%>
-				<a href="/IndexPage/<%= foundPost._id%>/comments/addNewComment" class="btn btn-lg btn-primary " id="button">Comment</a>
-			</div>
-
-			<br>
-			<br>
-			<div class="container commentContainer">
-				<% foundPost.comments.forEach(function(comment){ %>
-				  <br>
-				  <div>
-				        <p>
-				        	<em><strong><%= comment.author.username %></strong></em>: <%= comment.content %>
-				      	</p>
-				      	<% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
-				      	<div class="container">
-				      		<a href="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>/edit" class="btn btn-small btn-warning">Edit</a>
-				      		<form action="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>?_method=delete" method="post" style= "display: inline-block;">
-								<input class="btn btn-small btn-danger" id="button" type="submit" value="Delete">
-							</form>
-				      	</div>
-				      	<% } %>
-				  </div>
-				  <br>
-				<%});%>			
-			</div>
-
-		</div>
+<img class="postImage" src="https://images.unsplash.com/photo-1466979668278-ae3991367e7a?ixlib=rb-0.3.5&s=89dbdd8876de56cc8d1ff21f13d2c767&auto=format&fit=crop&w=1500&q=80" alt="postImage">
 
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-8">
+      <div class="row left">
+        <div class="container">
+          <div class="postContainer">
+            <div class="postTitle">
+              <h4><%= foundPost.title %> - <%= foundPost.subject%></h4>
+              <p>Monday Dec 24, 2017</p>
+            </div>
+            <div class="postAuthor">
+              <p><span><img class="profile rounded-circle" src="../img/profile.jpg" alt="profileIcon"></span> <span><em><%= foundPost.author.username %></em></span></p>
+            </div>
+            <div class="postContent">
+              <p><%= foundPost.content%></p>
+            </div>
+            <div class="container">
+              <% if (currentUser && foundPost.author.id.equals(currentUser._id)) { %>
+                <a href="/IndexPage/<%= foundPost._id%>/edit" class="btn btn-outline-secondary" id="button">Edit</a>
+                <form action="/IndexPage/<%= foundPost._id%>?_method=delete" method="post" style="display: inline-block;" onsubmit="return confirm('Are you sure to delete this post?');">
+                  <input class="btn btn-outline-secondary" id="button" type="submit" value="Delete">
+                </form>
+                <%}%>
+                <a href="/IndexPage/<%= foundPost._id%>/comments/addNewComment" class="btn btn-outline-secondary" id="button">Comment</a>
+              </div>
 
-<!-- 		<div class="chatContainer">
-			<div class="chatMessage">
-			  <div id="chatHeader"><h3><%= foundPost.title.toUpperCase() %> - <%= foundPost.subject.toUpperCase()%></h3></div>
+              <br>
+              <br>
+              <div class="container commentContainer">
+                <% foundPost.comments.forEach(function(comment){ %>
+                  <br>
+                  <div>
+                    <p>
+                      <em><strong><%= comment.author.username %></strong></em>: <%= comment.content %>
+                    </p>
+                    <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+                      <div class="container">
+                        <a href="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>/edit" class="btn btn-outline-secondary">Edit</a>
+                        <form action="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>?_method=delete" method="post" style= "display: inline-block;">
+                          <input class="btn btn-outline-secondary" id="button" type="submit" value="Delete">
+                        </form>
+                      </div>
+                      <% } %>
+                    </div>
+                    <br>
+                    <%});%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-			  <p><img id="profile" src="/img/User-1080.png" alt="Mountain View"><p><%= foundPost.author.username %></p></p>
 
-			  <div id="questionContent">
-			        <p>
-			        	<%= foundPost.content%>
-			      	</p>
-				</div>
-				<br>
+          <div class="col-md-12 col-lg-4">
+            <div class="card" style="width: 80%; margin: 0 10% 0 10%;">
+              <h3 class="centered">About Me</h3>
+              <img class="card-img-top" src="../img/profile.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Le Thi Yen Nhi</h5>
+                <p class="card-text">Passion for traveling wont stop anywhere!</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Travel many</li>
+                <li class="list-group-item">Live fun</li>
+                <li class="list-group-item">Love more</li>
+              </ul>
+              <div id="socilaArea" class="card-body">
+                <a href="#"><i id="socialIcons" class="fa fa-2x fa-youtube" aria-hidden="true"></i></a>
+                <a href="#"><i id="socialIcons" class="fa fa-2x fa-snapchat-square" aria-hidden="true"></i></a>
+                <a href="#"><i id="socialIcons" class="fa fa-2x fa-twitter" aria-hidden="true"></i></a>
+                <a href="#"><i id="socialIcons" class="fa fa-2x fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i id="socialIcons" class="fa fa-2x fa-instagram" aria-hidden="true"></i></i></a>
+                <% if(user){ %>
+                  <a href="/NewPost" id="socialIcons" class="btn btn-outline-secondary newpost">Add New Post</a>
+                <%}%>
+                </div>
+              </div>
+              <div class="card" style="width: 80%; margin: 20px 10% 0 10%;">
+                <div class="card-body">
+                  <p class="card-text">
+                    <form>
+                      <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="password" class="form-control" id="name" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="password" class="form-control" id="country" placeholder="Password">
+                      </div>
+                      <button class="btn btn-outline-secondary" type="submit">Get exclusive content</button>
+                    </form>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
 
-				<div class="container">
-					<% if (currentUser && foundPost.author.id.equals(currentUser._id)) { %>
-						<a href="/IndexPage/<%= foundPost._id%>/edit" class="btn btn-lg btn-warning" id="button">Edit</a>
-						<form action="/IndexPage/<%= foundPost._id%>?_method=delete" method="post" style="display: inline-block;" onsubmit="return confirm('Are you sure to delete this post?');">
-							<input class="btn btn-lg btn-danger" id="button" type="submit" value="Delete">
-						</form>
-					<%}%>
-					<a href="/IndexPage/<%= foundPost._id%>/comments/addNewComment" class="btn btn-lg btn-primary " id="button">Comment</a>
-				</div>
 
-			</div>
-			
-			<br>
-			<br>
-			<div class="container commentContainer">
-				<% foundPost.comments.forEach(function(comment){ %>
-				  <br>
-				  <div>
-				        <p>
-				        	<em><strong><%= comment.author.username %></strong></em>: <%= comment.content %>
-				      	</p>
-				      	<% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
-				      	<div class="container">
-				      		<a href="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>/edit" class="btn btn-small btn-warning">Edit</a>
-				      		<form action="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>?_method=delete" method="post" style= "display: inline-block;">
-								<input class="btn btn-small btn-danger" id="button" type="submit" value="Delete">
-							</form>
-				      	</div>
-				      	<% } %>
-				  </div>
-				  <br>
-				<%});%>			
-			</div>
-		</div> -->
-	</div>
-			
 <% include ./partials/footer %>

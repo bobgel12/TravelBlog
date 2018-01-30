@@ -1,6 +1,6 @@
 // Middleware
-
-var middleware = [];
+var Post 			= require("../models/post"),
+ 		middleware = [];
 
 middleware.isLoggedIn = function (req, res, next){
 	if (req.isAuthenticated()) {
@@ -43,6 +43,10 @@ middleware.isThisYourComment = function(req, res, next){
 
 middleware.noti = function(req, res, next){
 	req.flash("success", "hello");
+}
+middleware.passUser = function(req, res, next){
+	res.locals.user = req.user;
+	next();
 }
 
 module.exports = middleware;
