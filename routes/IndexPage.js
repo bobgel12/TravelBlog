@@ -5,7 +5,8 @@ var express = require("express"),
 	middleware = require("../middleware"),
 	passport = require("passport"),
 	User = require("../models/user"),
-	Subcriber = require("../models/subcriber");
+	Subcriber = require("../models/subcriber"),
+	nodemailer = require("nodemailer");
 
   router.get("/", function (req, res) {
   	Post.find({}, function(err, posts){
@@ -33,6 +34,7 @@ var express = require("express"),
   					res.render("IndexPage", {title: "IndexPage", posts: posts, currentUser: req.user});
       			}
   			});
+
   		}
   	});
   });
@@ -155,6 +157,30 @@ router.post("/subcribe", function(req, res){
 			console.log("subcriber saved success!");
 			res.redirect("/");
 		}
+	});
+})
+
+router.get("/sendNewLetter", function(req, res){
+	console.log("here");
+	var transporter = nodemailer.createTransport({
+	 service: 'gmail',
+	 auth: {
+					user: 'bobgel12@gmail.com',
+					pass: 'Aa7580367'
+			}
+	});
+	const mailOptions = {
+		from: 'bobgel12@gmail.com', // sender address
+		to: 'angelnhi212@gmail.com', // list of receivers
+		subject: 'Angel just posted a new entry!', // Subject line
+		html: '<p>Testing For Angel Blog</p>'// plain text body
+	};
+	transporter.sendMail(mailOptions, function (err, info) {
+	   if(err)
+	     console.log(err)
+	   else
+	     console.log(info);
+			 redirect("/");
 	});
 })
 

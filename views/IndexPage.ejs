@@ -1,7 +1,7 @@
 <% include ./partials/header %>
 
 <div class="crop-container">
-    <img class="showcase" src="./img/3old.jpg" alt="cars">
+    <img class="showcase" src="/img/3old.jpg" alt="cars">
 </div>
 
 <div class="container1">
@@ -28,7 +28,7 @@
       </div>
       <div class="col-md-12 col-lg-4">
         <div class="card" style="width: 80%; margin: 0 10% 0 10%;">
-          <img class="card-img-top rounded-circle" src="./img/profile.jpg" alt="Card image cap">
+          <img class="card-img-top rounded-circle profile" src="./img/profile.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Le Thi Yen Nhi</h5>
             <p class="card-text">Passion for traveling wont stop anywhere!</p>
@@ -41,6 +41,7 @@
             <a href="#"><i id="socialIcons" class="fa fa-2x fa-instagram" aria-hidden="true"></i></i></a>
             <% if(user){ %>
               <a href="/NewPost" id="socialIcons" class="btn btn-outline-secondary newpost">Add New Post</a>
+              <a href="/sendNewLetter" id="socialIcons" class="btn btn-outline-secondary newpost">Send New Letter</a>
             <%}%>
             </div>
           </div>

@@ -105,3 +105,15 @@ header .btn{
 .card{
   border-color: white;
 }
+.instagramfooter{
+  text-align: center;
+  height: 200px;
+}
+.instagramfooter img{
+  max-height: 160px;;
+  max-width: 100%;
+}
+.profile{
+  width: 70%;
+  margin: 0 auto;
+}

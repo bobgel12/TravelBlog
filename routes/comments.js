@@ -10,7 +10,7 @@ var express = require("express"),
 
 
 //  Create Comment
-router.post("/", middleware.isLoggedIn ,function (req, res) {
+router.post("/", function (req, res) {
 	Post.findById(req.params.id, function (err, foundPost) {
 		if (err) {
 			console.log(err);
@@ -19,21 +19,21 @@ router.post("/", middleware.isLoggedIn ,function (req, res) {
 				if (err) {
 					console.log(err);
 				} else{
-					// Adding author to comment
-					comment.author.id = req.user._id;
-					comment.author.username = req.user.username;
+					comment.author.name = req.body.name;
+					comment.author.email = req.body.email;
 					comment.save();
+					console.log(comment);
 					// Pushing the comment to the array in Post.comments
 					foundPost.comments.push(comment);
 					foundPost.save();
-					res.redirect("/IndexPage/"+req.params.id);
+					res.redirect("/");
 				}
 			});
 		}
 	});
 });
 
-router.get("/addNewComment", middleware.isLoggedIn,function (req, res) {
+router.get("/addNewComment",function (req, res) {
 	Post.findById(req.params.id, function (err, foundPost) {
 		if (err) {
 			console.log(err);
@@ -44,7 +44,7 @@ router.get("/addNewComment", middleware.isLoggedIn,function (req, res) {
 });
 
 // Edit Comment
-router.get("/:commentId/edit", middleware.isThisYourComment,  function(req, res){
+router.get("/:commentId/edit",  function(req, res){
 	Comment.findById(req.params.commentId, function(err, foundComment){
 		if (err) {
 			console.log(err);
@@ -53,7 +53,7 @@ router.get("/:commentId/edit", middleware.isThisYourComment,  function(req, res)
 		}
 	});
 });
-router.put("/:commentId", middleware.isThisYourComment, function(req, res){
+router.put("/:commentId", function(req, res){
 	Comment.findByIdAndUpdate(req.params.commentId, req.body.comment, function (err, updatedComment) {
 		if (err) {
 			console.log(err);
@@ -67,7 +67,7 @@ router.put("/:commentId", middleware.isThisYourComment, function(req, res){
 });
 
 // Delete Comment
-router.delete("/:commentId", middleware.isThisYourComment, function (req, res) {
+router.delete("/:commentId", function (req, res) {
 	Comment.findByIdAndRemove(req.params.commentId, function(err){
 		if (err) {
 			req.flash("error", "There is a problem when you try to delete the comment")

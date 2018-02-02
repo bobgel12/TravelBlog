@@ -1,6 +1,7 @@
 // Middleware
-var Post 			= require("../models/post"),
- 		middleware = [];
+var Post 			      = require("../models/post"),
+    nodemailer 			= require("nodemailer");
+ 		middleware      = [];
 
 middleware.isLoggedIn = function (req, res, next){
 	if (req.isAuthenticated()) {

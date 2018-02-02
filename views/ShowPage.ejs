@@ -1,4 +1,4 @@
-<% include ./partials/header %>
+  <% include ./partials/header %>
 <head>
   <link rel="stylesheet" href="../css/ShowPage.css">
 </head>
@@ -39,20 +39,44 @@
                   <br>
                   <div>
                     <p>
-                      <em><strong><%= comment.author.username %></strong></em>: <%= comment.content %>
+                      <em><strong><%= comment.author.name %></strong></em>: <%= comment.content %>
                     </p>
-                    <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+                    <!-- <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
                       <div class="container">
                         <a href="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>/edit" class="btn btn-outline-secondary">Edit</a>
                         <form action="/IndexPage/<%= foundPost._id%>/comments/<%= comment._id%>?_method=delete" method="post" style= "display: inline-block;">
                           <input class="btn btn-outline-secondary" id="button" type="submit" value="Delete">
                         </form>
                       </div>
-                      <% } %>
+                      <% } %> -->
                     </div>
                     <br>
                     <%});%>
                   </div>
+
+                  <div class="card" style="width: 80%; margin: 20px 10% 0 10%;">
+                    <div class="card-body">
+                      <p class="card-text">
+                        <form action="/IndexPage/<%= foundPost._id %>/comments" method="POST">
+                          <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          </div>
+                          <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                          </div>
+                          <div class="form-group">
+                            <label for="content">Your Comment</label>
+                            <input type="text" class="form-control" id="country" name="comment[content]" placeholder="Let us know what you think!">
+                          </div>
+                          <button class="btn btn-outline-secondary" type="submit">Send</button>
+                        </form>
+                      </p>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>

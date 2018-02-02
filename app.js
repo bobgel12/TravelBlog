@@ -1,18 +1,19 @@
-var express 	= require("express"),
-	bodyParser 	= require("body-parser"),
-	mongoose 	= require("mongoose"),
-	passport 	= require("passport"),
-	flash 		= require("connect-flash-plus"),
-	Post 			= require("./models/post"),
-	Comment 	= require("./models/comment"),
-	User 			= require("./models/user"),
+var express 			= require("express"),
+	bodyParser 			= require("body-parser"),
+	mongoose 				= require("mongoose"),
+	passport 				= require("passport"),
+	flash 					= require("connect-flash-plus"),
+	Post 						= require("./models/post"),
+	Comment 				= require("./models/comment"),
+	User 						= require("./models/user"),
 	LocalStrategy 	= require("passport-local"),
 	methodOverride 	= require("method-override"),
-	session 		= require("express-session"),
-	middleware = require("./middleware");
+	session 				= require("express-session"),
+	middleware 			= require("./middleware"),
+	nodemailer 			= require("nodemailer");
 
-var  indexPageRoutes = require("./routes/IndexPage"),
-	   commentRoutes 	= require("./routes/comments"),
+var  indexPageRoutes 	= require("./routes/IndexPage"),
+	   commentRoutes 		= require("./routes/comments"),
      app = express();
 
 // Fixing the ennoying bugs
@@ -22,7 +23,6 @@ var  indexPageRoutes = require("./routes/IndexPage"),
 // mongoose.connect(url);
 mongoose.connect("mongodb://angel:Angelle212@ds115768.mlab.com:15768/angelblog");
 
-// app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static("public"));
 
 app.set("view engine", "ejs");
