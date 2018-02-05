@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="../css/ShowPage.css">
 </head>
 
-<img class="postImage" src="https://images.unsplash.com/photo-1466979668278-ae3991367e7a?ixlib=rb-0.3.5&s=89dbdd8876de56cc8d1ff21f13d2c767&auto=format&fit=crop&w=1500&q=80" alt="postImage">
+<img class="postImage" src="<%= foundPost.imgUrl %>" alt="postImage">
 
 
 <div class="container">
@@ -14,7 +14,7 @@
           <div class="postContainer">
             <div class="postTitle">
               <h4><%= foundPost.title %> - <%= foundPost.subject%></h4>
-              <p>Monday Dec 24, 2017</p>
+              <p><%= foundPost.date.toString %></p>
             </div>
             <div class="postAuthor">
               <p><span><img class="profile rounded-circle" src="../img/profile.jpg" alt="profileIcon"></span> <span><em><%= foundPost.author.username %></em></span></p>
@@ -60,16 +60,16 @@
                         <form action="/IndexPage/<%= foundPost._id %>/comments" method="POST">
                           <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Enter email">
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Enter email" required = "true">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                           </div>
                           <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" required = "true">
                           </div>
                           <div class="form-group">
                             <label for="content">Your Comment</label>
-                            <input type="text" class="form-control" id="country" name="comment[content]" placeholder="Let us know what you think!">
+                            <input type="text" class="form-control" id="country" name="comment[content]" placeholder="Let us know what you think!" required = "true">
                           </div>
                           <button class="btn btn-outline-secondary" type="submit">Send</button>
                         </form>
@@ -113,16 +113,16 @@
                     <form>
                       <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required = "true">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                       </div>
                       <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="password" class="form-control" id="name" placeholder="Password">
+                        <input type="password" class="form-control" id="name" placeholder="Password" required = "true">
                       </div>
                       <div class="form-group">
                         <label for="country">Country</label>
-                        <input type="password" class="form-control" id="country" placeholder="Password">
+                        <input type="password" class="form-control" id="country" placeholder="Password" required = "true">
                       </div>
                       <button class="btn btn-outline-secondary" type="submit">Get exclusive content</button>
                     </form>

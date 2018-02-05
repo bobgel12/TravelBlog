@@ -14,7 +14,8 @@
 					<input class = "form-control" id="url" type="text" placeholder="image url" name="post[url]" value="<%= foundPost.url%>">
 				</div>
 				<div class="form-group">
-					<textarea class="form-control" id="question" name="post[content]" rows="8" cols="80"><%= foundPost.content%></textarea>
+					<textarea class="form-control" name="post[content]" rows="8" cols="80"><%= foundPost.content%></textarea>
+					<!-- <textarea class="form-control" id="question" name="post[content]" rows="8" cols="80"><%= foundPost.content%></textarea> -->
 				</div>
 				<div class="form-group">
 					<input class = "form-control" type="submit" value="Submit" class="btn btn-primary btn-lg btn-block">
@@ -25,12 +26,12 @@
 	</div>
 </div>
 
-<script src="/javascript/nicEdit.js"></script>
+<!-- <script src="/javascript/nicEdit.js"></script>
 <script type="text/javascript">
 	bkLib.onDomLoaded(function() {
 		new nicEditor({fullPanel : true}).panelInstance('question');
 	});
-</script>
+</script> -->
 
 
 <% include ./partials/footer %>

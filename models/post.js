@@ -4,7 +4,15 @@ var mongoose = require("mongoose");
 var postSchema = new mongoose.Schema({
 	content: String,
 	title: String,
-	subject: String,
+	imgUrl: String,
+	date: {
+		year: String,
+		month: String,
+		date: String,
+		hour: String,
+		minute: String,
+		toString: String
+	},
 	author: {
 				id: {
 						type: mongoose.Schema.Types.ObjectId,
@@ -29,23 +37,3 @@ var postSchema = new mongoose.Schema({
 
 // Export the module
 module.exports = mongoose.model("Post", postSchema);
-
-
-// var postSchema = new mongoose.Schema({
-// 	content: String,
-// 	title: String,
-// 	subject: String,
-// 	author: {
-// 				id: {
-// 						type: mongoose.Schema.Types.ObjectId,
-// 						ref: "User"
-// 					},
-// 				username: String
-// 			},
-// 	comments: [
-// 		{
-// 			type: mongoose.Schema.Types.ObjectId,
-// 			ref: "Comment"
-// 		}
-// 	]
-// });

@@ -47,7 +47,14 @@ var express = require("express"),
   		else{
   			post.author.id = req.user._id;
   			post.author.username = req.user.username;
+				var currentDate = new Date();
+				post.date.year = currentDate.getFullYear();
+				post.date.month = currentDate.getMonth();
+				post.date.date = currentDate.getDate();
+				post.date.minute = currentDate.getMinutes();
+				post.date.toString = currentDate.getMonth() + "/" + currentDate.getDate() +"/" + currentDate.getFullYear();
   			post.save();
+				console.log(post);
   			res.redirect("/");
   		}
   	});
